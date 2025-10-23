@@ -1,0 +1,166 @@
+:root {
+    --accent: #ff6f00;
+    --dark: #0d1b2a;
+    --muted: #6c757d;
+}
+
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    margin: 0;
+    color: #222
+}
+
+
+.hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 3.5rem 1rem;
+    background-image:
+        linear-gradient(rgba(13, 27, 42, 0.45), rgba(13, 27, 42, 0.45)),
+        url("https://imgcdn.stablediffusionweb.com/2025/10/17/bfabd0e1-26a3-414c-9289-24d206aee787.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, .6);
+    margin-bottom: .5rem
+}
+
+.hero p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+    margin-bottom: 1rem
+}
+
+
+.card-highlight {
+    border: 0;
+    border-radius: .75rem;
+    box-shadow: 0 6px 20px rgba(13, 27, 42, .12);
+    transition: transform .25s;
+    background: #fff;
+}
+
+.card-highlight:hover {
+    transform: translateY(-6px)
+}
+
+.h-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+}
+
+
+.thumb {
+    cursor: pointer;
+    border-radius: .5rem;
+    transition: transform .18s;
+}
+
+.thumb:hover {
+    transform: scale(1.03)
+}
+
+
+footer {
+    background: var(--dark);
+    color: #cbd5e1;
+    padding: 1.2rem 0;
+    font-size: .95rem
+}
+
+footer a {
+    color: #f8f9fa;
+    opacity: .9
+}
+
+
+#cookieBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 27, 42, .95);
+    color: #fff;
+    z-index: 2000;
+    padding: 1rem;
+    display: none
+}
+
+#cookieBar a {
+    color: var(--accent)
+}
+
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+@media (max-width: 575px) {
+    .hero {
+        min-height: 60vh;
+        padding: 2.5rem 1rem;
+    }
+
+    .h-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 20px;
+    }
+}
+
+
+.btn-warning {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1a1a;
+}
+
+.btn-outline-primary {
+    border-color: rgba(13, 27, 42, .08);
+    color: #0d1b2a;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 .15rem rgba(255, 111, 0, .15);
+    border-color: var(--accent);
+}
+
+
+.carousel .d-block {
+    object-fit: cover;
+    height: 60vh;
+}
+
+
+.equal-height {
+    display: flex;
+    flex-direction: column;
+}
+
+.equal-height>* {
+    flex: 1;
+}
+
+
+a:focus,
+button:focus,
+input:focus {
+    outline: 3px solid rgba(255, 111, 0, .18);
+    outline-offset: 2px;
+}
