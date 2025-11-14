@@ -32,9 +32,15 @@
         }
         function checkGuess () {
             attemps++
+            attempsEl.textContent = attemps
         }
 
         document.getElementById ('guessBtn').addEventListener ('click', checkGuess)
+        document.getElementById ('guess').addEventListener ('keydown', function (event) {
+            if (e.key === 'Enter') {
+                checkGuess()
+            }
+        })
 
         newGame
     </script>
