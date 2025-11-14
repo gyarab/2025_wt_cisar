@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JS Game</h1>
+    <p>
+        Hadej cislo od 1 do 20
+    </p>
+    <input type="button" value="Nova hra" >
+    <br>
+    <input id="guess" type="number" name="guess">
+    <input id = "guessBtn" type="button" value="Zkus">
+
+    <p>
+        Počet pokusů <span id="attemps">0</span>.
+    </p>
+
+    <script>
+        let secretNumber
+        let attemps
+
+        function newGame() {
+            secretNumber = Math.floor(Math.random() * 20) + 1
+            attemps = 0
+
+            console.log ('---NEW GAME---')
+            console.log ('tajne cislo je', secretNumber)
+        }
+        function checkGuess () {
+            attemps++
+        }
+
+        document.getElementById ('guessBtn').addEventListener ('click', checkGuess)
+
+        newGame
+    </script>
+</body>
+</html>
