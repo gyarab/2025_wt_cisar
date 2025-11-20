@@ -10,39 +10,86 @@
     <p>
         Hadej cislo od 1 do 20
     </p>
-    <input type="button" value="Nova hra" >
-    <br>
+    <input id="newGameBtn" type="button" value="Nova hra" >
+    <br><br>
     <input id="guess" type="number" name="guess">
     <input id = "guessBtn" type="button" value="Zkus">
 
+    <p id="message"></p>
+    
+
     <p>
-        Počet pokusů <span id="attemps">0</span>.
+        Počet pokusů <span id="attempts">0</span>
     </p>
 
     <script>
         let secretNumber
-        let attemps
+        let attempts
+        const attemptsEl = document.getElementById("attempts");
+
 
         function newGame() {
             secretNumber = Math.floor(Math.random() * 20) + 1
-            attemps = 0
+            attempts = 0
+
+            messageEl.textContent = ""
+            messageEl.style.color = "black"
+            attemptsEl.textContent = "0"
+            
+
+
 
             console.log ('---NEW GAME---')
             console.log ('tajne cislo je', secretNumber)
         }
+
+      
         function checkGuess () {
-            attemps++
-            attempsEl.textContent = attemps
+            const guess = Number(document.getElementById("guess").value);
+            if (!guess) {
+                messageEl.textContent = "Zadej číslo!";
+                return;
+        }
+        
+        
+        attempts++
+        attemptsEl.textContent = attempts
+        
+        console.log("Hráč tipuje:", guess)
+
+        if (attempts >= maxAttempts && guess !== secretNumber) {
+                messageEl.textContent = "Prohrál jsi! Došly ti pokusy."
+                messageEl.style.color = "red"
+                console.log("GAME OVER")
+                return
+            }
+
+        if (guess === secretNumber) {
+                messageEl.textContent = "Vyhrál jsi! 🎉"
+                messageEl.style.color = "green"   // rozšíření: změna barvy
+                console.log("Hráč vyhrál!")
+            } else if (guess < secretNumber) {
+                messageEl.textContent = "Zkus větší číslo."
+            } else {
+                messageEl.textContent = "Zkus menší číslo."
+            }
         }
 
-        document.getElementById ('guessBtn').addEventListener ('click', checkGuess)
-        document.getElementById ('guess').addEventListener ('keydown', function (event) {
-            if (e.key === 'Enter') {
-                checkGuess()
-            }
-        })
+        document.getElementById("guessBtn").addEventListener("click", checkGuess)
 
-        newGame
+        document.getElementById("guess").addEventListener("keydown", function (event) {
+            if (event.key === 'Enter') {
+                checkGuess();
+            }
+        });
+
+        document.getElementById("newGameBtn").addEventListener("click", newGame)
+
+       
+
+        
+
+        newGame();
     </script>
 </body>
 </html>
