@@ -30,7 +30,6 @@
         const guessBtn = document.getElementById("guessBtn");
         const newGameBtn = document.getElementById("newGameBtn");
 
-        // Spuštění nové hry
         function newGame() {
             secretNumber = Math.floor(Math.random() * 20) + 1;
             attempts = 0;
@@ -47,7 +46,6 @@
             console.log('tajne cislo je', secretNumber);
         }
 
-        // Konec hry při prohře
         function endGameLose() {
             messageEl.textContent = "Prohrál jsi! Došly ti pokusy.";
             messageEl.style.color = "red";
@@ -56,7 +54,6 @@
             console.log("GAME OVER");
         }
 
-        // Kontrola tipu
         function checkGuess() {
             const guess = Number(guessInput.value);
 
@@ -88,7 +85,7 @@
             }
         }
 
-        // Eventy
+        // eventy
         guessBtn.addEventListener("click", checkGuess);
 
         guessInput.addEventListener("keydown", function(event) {
@@ -97,7 +94,7 @@
 
         newGameBtn.addEventListener("click", newGame);
 
-        // Start hry automaticky
+        // start
         newGame();
     </script>
 </body>

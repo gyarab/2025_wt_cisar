@@ -24,72 +24,54 @@
 
     <script>
         let secretNumber
-        let attempts
-        const attemptsEl = document.getElementById("attempts");
+    let attempts
+    const attemptsEl = document.getElementById("attempts")
+    const messageEl = document.getElementById("message")
+    const maxAttempts = 10
 
+    function newGame() {
+        secretNumber = Math.floor(Math.random() * 20) + 1
+        attempts = 0
 
-        function newGame() {
-            secretNumber = Math.floor(Math.random() * 20) + 1
-            attempts = 0
+        messageEl.textContent = ""
+        messageEl.style.color = "black"
+        attemptsEl.textContent = "0"
 
-            messageEl.textContent = ""
-            messageEl.style.color = "black"
-            attemptsEl.textContent = "0"
-            
+        console.log('---NEW GAME---')
+        console.log('tajne cislo je', secretNumber)
+    }
 
-
-
-            console.log ('---NEW GAME---')
-            console.log ('tajne cislo je', secretNumber)
+    function checkGuess() {
+        const guess = Number(document.getElementById("guess").value)
+        if (!guess) {
+            messageEl.textContent = "Zadej číslo!"
+            return
         }
 
-      
-        function checkGuess () {
-            const guess = Number(document.getElementById("guess").value);
-            if (!guess) {
-                messageEl.textContent = "Zadej číslo!";
-                return;
+        
+            messageEl.style.color = "red"
+            return
         }
-        
-        
-        attempts++
-        attemptsEl.textContent = attempts
-        
-        console.log("Hráč tipuje:", guess)
-
-        if (attempts >= maxAttempts && guess !== secretNumber) {
-                messageEl.textContent = "Prohrál jsi! Došly ti pokusy."
-                messageEl.style.color = "red"
-                console.log("GAME OVER")
-                return
-            }
 
         if (guess === secretNumber) {
-                messageEl.textContent = "Vyhrál jsi! 🎉"
-                messageEl.style.color = "green"   // rozšíření: změna barvy
-                console.log("Hráč vyhrál!")
-            } else if (guess < secretNumber) {
-                messageEl.textContent = "Zkus větší číslo."
-            } else {
-                messageEl.textContent = "Zkus menší číslo."
-            }
+            messageEl.textContent = "Vyhrál jsi! 🎉"
+            messageEl.style.color = "green"
+        } else if (guess < secretNumber) {
+            messageEl.textContent = "Zkus větší číslo."
+        } else {
+            messageEl.textContent = "Zkus menší číslo."
         }
+    
 
-        document.getElementById("guessBtn").addEventListener("click", checkGuess)
+    document.getElementById("guessBtn").addEventListener("click", checkGuess)
+    document.getElementById("guess").addEventListener("keydown", function (event) {
+        if (event.key === 'Enter') {
+            checkGuess()
+        }
+    })
+    document.getElementById("newGameBtn").addEventListener("click", newGame)
 
-        document.getElementById("guess").addEventListener("keydown", function (event) {
-            if (event.key === 'Enter') {
-                checkGuess();
-            }
-        });
-
-        document.getElementById("newGameBtn").addEventListener("click", newGame)
-
-       
-
-        
-
-        newGame();
+    newGame()
     </script>
 </body>
 </html>
