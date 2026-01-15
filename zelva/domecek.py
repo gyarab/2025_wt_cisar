@@ -1,5 +1,6 @@
 from turtle import *
 from math import sqrt
+from random import randint
 
 def domecek(a):
     forward(a)
@@ -20,8 +21,17 @@ def domecek(a):
     right(90)
     forward(sqrt(2*a**2)/2)
 
-domecek(100)
-exitonclick
+penup()
+goto(0, -150)
+pendown()
+
+for i in range(12):
+    velikost = randint(50, 90)
+    domecek(velikost)
+    left(30)
+
+exitonclick()
+
 
 
 
